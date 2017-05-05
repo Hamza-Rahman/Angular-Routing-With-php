@@ -1,0 +1,33 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>TryMe</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular.min.js"></script>
+</head>
+<body ng-app="myApp" mg-controller="myctrl">
+
+<input type="button" name="" value="">
+
+    <ul ng-repeat="student in studentList">
+        <li>{{student.std_name}}</li>
+    </ul>
+
+<script type="text/javascript">
+
+var app = angular.module('myApp', []);
+app.controller('myctrl', function($scope, $http){
+	$http({ 
+		method:'GET',
+	 	url:'./pages/popData.php'
+	 }).then(function success(res){
+	 	$scope.mytext = res;
+	}, function error(res){
+		alert('error');
+	});
+});
+
+	
+</script>
+</body>
+</html>
